@@ -1,13 +1,16 @@
 package com.example.demo.New;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Component
 public class UserDaoService {
+
 
     //creat static list
 
@@ -21,6 +24,11 @@ public class UserDaoService {
 
     public List<User> findAll(){
         return users;
+    }
+
+    public User findById(int id){
+        return users.stream().filter(user -> user.getId().equals(id)).findFirst().get();
+
     }
 
 }
